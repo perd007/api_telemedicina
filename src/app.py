@@ -218,7 +218,7 @@ def get_patient_by_id(id):
 
 # get patients
 @app.route("/patients", methods=["GET"])
-@jwt_required()
+#@jwt_required()
 def get_patients():
     patients = Patient.query.all()
     return jsonify({"patienst": [patient.serialize() for patient in patients]}), 200
