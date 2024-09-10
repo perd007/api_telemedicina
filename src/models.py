@@ -85,16 +85,17 @@ class Appointment(db.Model):
     confirmation = db.Column(db.String(20), unique=False, nullable=False)
     id_doctor = db.Column(db.Integer, db.ForeignKey("doctor.id"), nullable=False)
     id_patient = db.Column(db.Integer, db.ForeignKey("patient.id"), nullable=False)
-    record = db.relationship("Record", backref="appointmentgit st", lazy=True)
+    record = db.relationship("Record", backref="appointment", lazy=True)
 
     def __repr__(self):
-        return f"<Appointment {self.name}>"
+        return f"<Appointment {self.date}>"
 
     def serialize(self):
         return {
             "id": self.id,
             "date": self.date,
             "reason": self.reason,
+            "mode": self.mode,
             "confirmation": self.confirmation,
             "id_doctor": self.id_doctor,
             "id_patient": self.id_patient,
