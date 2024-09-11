@@ -24,8 +24,23 @@ services:
           name: flask-rest-42170
           property: connectionString
 
-databases: # Render PostgreSQL database
-  - name: flask-rest-42170
-    region: ohio
-    ipAllowList: [] # only allow internal connections
-    plan: free # optional; defaults to starter
+# databases: # Render PostgreSQL database
+# - name: flask-rest-42170
+#   region: ohio
+#   ipAllowList: [] # only allow internal connections
+#   plan: free # optional; defaults to starter
+
+#service: telemedicina
+
+# Exported from Render on 2024-09-11T02:52:36Z
+databases:
+- name: telemedicina
+  databaseName: telemedicina
+  user: telemedicina_user
+  plan: free
+  region: ohio
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "15"
+version: "1"
